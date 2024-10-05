@@ -48,9 +48,9 @@ public class Conversor extends JFrame {
 		cPConversor.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLocationRelativeTo(null);
 		setContentPane(cPConversor);
-		cPConversor.setLayout(null);
 
 		JButton btnMedidas = new JButton("MEDIDAS");
+		btnMedidas.setBounds(165, 145, 115, 55);
 		btnMedidas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Abre la nueva ventana MedidasPanel
@@ -59,25 +59,25 @@ public class Conversor extends JFrame {
 				dispose();
 			}
 		});
+		cPConversor.setLayout(null);
 
 		btnMedidas.setBorder(new LineBorder(null, 3, true));
 		btnMedidas.setBackground(Color.WHITE);
 		btnMedidas.setForeground(new Color(0, 0, 0));
 		btnMedidas.setFont(new Font("Mongolian Baiti", Font.PLAIN, 15));
-		btnMedidas.setBounds(165, 145, 115, 55);
 		cPConversor.add(btnMedidas);
 
 		JButton btnTemperaturas = new JButton("TEMPERATURAS");
+		btnTemperaturas.setBounds(305, 145, 132, 55);
 		btnTemperaturas.setForeground(Color.BLACK);
 		btnTemperaturas.setFont(new Font("Mongolian Baiti", Font.PLAIN, 15));
 		btnTemperaturas.setBorder(new LineBorder(null, 3, true));
 		btnTemperaturas.setBackground(Color.WHITE);
-		btnTemperaturas.setBounds(305, 145, 132, 55);
 		cPConversor.add(btnTemperaturas);
 
 		JLabel fondo = new JLabel("");
-		fondo.setIcon(new ImageIcon(Conversor.class.getResource("/img/img.png")));
 		fondo.setBounds(0, 0, 590, 371);
+		fondo.setIcon(new ImageIcon(Conversor.class.getResource("/img/img.png")));
 		cPConversor.add(fondo);
 	}
 
