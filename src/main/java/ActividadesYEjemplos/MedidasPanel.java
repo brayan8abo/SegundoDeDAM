@@ -44,11 +44,7 @@ public class MedidasPanel extends JFrame {
 				// Aquí iría la lógica de conversión.
 				String valor = textField.getText();
 				System.out.println("Valor a convertir: " + valor);
-				
-			
-				
-			
-				
+
 			}
 		});
 		contentPane.setLayout(null);
@@ -56,13 +52,17 @@ public class MedidasPanel extends JFrame {
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				String opcion = comboBox.getSelectedItem().toString();
+				if (opcion == comboBox.getName()) {
+					convertirCentimetrosAMetros(100);
+					
+				}
 				
-			
+
 			}
 		});
 		comboBox.setBounds(32, 132, 137, 40);
-		
 
 		comboBox.setFont(new Font("Mongolian Baiti", Font.PLAIN, 15));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "CENTIMETROS", "METROS", "KILOMETROS" }));
@@ -70,11 +70,10 @@ public class MedidasPanel extends JFrame {
 		contentPane.add(comboBox);
 
 		JLabel lblOpcion = new JLabel("ESCOGE UNA OPCÓN");
-		lblOpcion.setBounds(192, 43, 191, 46);
-		lblOpcion.setBorder(new LineBorder(new Color(0, 0, 0)));
+		lblOpcion.setBounds(163, 32, 263, 89);
 		lblOpcion.setForeground(new Color(128, 0, 0));
 		lblOpcion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOpcion.setFont(new Font("Mongolian Baiti", Font.PLAIN, 15));
+		lblOpcion.setFont(new Font("Mongolian Baiti", Font.PLAIN, 24));
 		contentPane.add(lblOpcion);
 
 		JComboBox comboBox_1 = new JComboBox();
@@ -83,8 +82,13 @@ public class MedidasPanel extends JFrame {
 		comboBox_1.setMaximumRowCount(3);
 		comboBox_1.setFont(new Font("Mongolian Baiti", Font.PLAIN, 15));
 		contentPane.add(comboBox_1);
-		
+
 		textDato = new JTextField();
+		textDato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textDato.getText();
+			}
+		});
 		textDato.setBounds(233, 142, 86, 20);
 		contentPane.add(textDato);
 		textDato.setColumns(10);
@@ -93,5 +97,13 @@ public class MedidasPanel extends JFrame {
 		lblFondo.setBounds(0, 0, 574, 321);
 		lblFondo.setIcon(new ImageIcon(MedidasPanel.class.getResource("/img/fondo.png")));
 		contentPane.add(lblFondo);
+	}
+
+	public static double convertirCentimetrosAMetros(double centimetros) {
+		return centimetros / 100;
+	}
+
+	public static double convertirMetrosAKilometros(double metros) {
+		return metros / 1000;
 	}
 }
