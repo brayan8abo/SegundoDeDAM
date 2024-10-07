@@ -42,22 +42,22 @@ public class FrameLayouts extends JFrame {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		 //ABSOLUTE LAYOUT
+		/* ABSOLUTE LAYOUT
 		contentPane.setLayout(null);
 		JButton buttonOK = new JButton("OK");
 		JButton buttonCancel = new JButton("Cancel");
 		contentPane.add(buttonOK);
 		buttonOK.setBounds(10, 10, 70, 70);
 		buttonCancel.setBounds(100, 100, 100, 100);
-		
-		// BORDER LAYOUT 
+		*/
+		/* BORDER LAYOUT 
 		contentPane.setLayout(new BorderLayout());
 		JPanel panelCentral = new JPanel();
-		JButton buttonOK1 = new JButton("OK");
-		JButton buttonCancel1 = new JButton("Cancel");
-		panelCentral.add(buttonOK1);
+		JButton buttonOK = new JButton("OK");
+		JButton buttonCancel = new JButton("Cancel");
+		panelCentral.add(buttonOK);
 
-		panelCentral.add(buttonCancel1);
+		panelCentral.add(buttonCancel);
 		contentPane.add(panelCentral,BorderLayout.CENTER);
 		
 		JButton buttonNORTE = new JButton("NORTE");
@@ -68,24 +68,24 @@ public class FrameLayouts extends JFrame {
 		contentPane.add(buttonESTE,BorderLayout.EAST);
 		JButton buttonOESTE = new JButton("OESTE");
 		contentPane.add(buttonOESTE,BorderLayout.WEST);
-		setContentPane(contentPane);
-		//FLOW LAYOUT
+		setContentPane(contentPane);*/
+		/* FLOW LAYOUT
 		contentPane.setLayout(new FlowLayout(FlowLayout.RIGHT, 40,10));
-		JButton buttonOK11 = new JButton("OK");
-		JButton buttonCancel11 = new JButton("Cancel");
-		contentPane.add(buttonOK11);
-		contentPane.add(buttonCancel11);
-		setContentPane(contentPane);
+		JButton buttonOK = new JButton("OK");
+		JButton buttonCancel = new JButton("Cancel");
+		contentPane.add(buttonOK);
+		contentPane.add(buttonCancel);
+		setContentPane(contentPane); */
 		
-		//GRID LAYOUT new GridLayout(ROWS/filas, COLUMNS, HORIZONTAL GAP, VERTICAL GAP)
+		/* GRID LAYOUT new GridLayout(ROWS/filas, COLUMNS, HORIZONTAL GAP, VERTICAL GAP)
 		contentPane.setLayout(new GridLayout(5,5,2,3));
 		for (int i=0; i<25;i++) {
 			JButton button = new JButton(Integer.toString(i));
 			contentPane.add(button);
 		}
-		setContentPane(contentPane);
+		setContentPane(contentPane);*/
 		
-		//GRID BAG LAYOUT new GridLayout(ROWS/filas, COLUMNS, HORIZONTAL GAP, VERTICAL GAP)
+		/* GRID BAG LAYOUT new GridLayout(ROWS/filas, COLUMNS, HORIZONTAL GAP, VERTICAL GAP)
 		contentPane.setLayout(new GridBagLayout());
 		for (int i=0; i<25;i++) {
 			JButton button = new JButton(Integer.toString(i));
@@ -93,12 +93,26 @@ public class FrameLayouts extends JFrame {
 		}
 		setContentPane(contentPane);
 		
+		*
+		GirdBadContraints caracteristicas
+		gridx gridy -> colocacion en el grid (columna y fila)
+		gridheight -> gridweight dimensiones de filas y columnas
+		Fill -> expansión para rellenar o no por completo la celda
+		upadx ipady paddings internos de celda
+		*
+		*/
+		
+		
+		
+	
+		
+		
 		/* Box LAYOUT */
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
-		JButton buttonOK111= new JButton("OK");
-		JButton buttonCancel111 = new JButton("Cancel");
-		contentPane.add(buttonOK111);
-		contentPane.add(buttonCancel111);
+		JButton buttonOK = new JButton("OK");
+		JButton buttonCancel = new JButton("Cancel");
+		contentPane.add(buttonOK);
+		contentPane.add(buttonCancel);
 		setContentPane(contentPane);
 	}
 
