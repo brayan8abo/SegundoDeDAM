@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import ActividadesYEjemplos.MiDialogo;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -21,8 +22,9 @@ public class ListaTareas extends JFrame {
 	private JPanel contentPane;
 	private static int seleccionado;
 	JList lista = new JList();
+	String nuevaTarea;
 
-	static DefaultListModel<String> listModel = new DefaultListModel<String>();
+	DefaultListModel<String> listModel = new DefaultListModel<>();
 
 	/**
 	 * Launch the application.
@@ -56,6 +58,7 @@ public class ListaTareas extends JFrame {
 		setLocationRelativeTo(null);
 
 		lista = new JList();
+		lista.setModel(listModel);
 		lista.setBounds(121, 53, 333, 145);
 		contentPane.add(lista);
 
@@ -64,8 +67,16 @@ public class ListaTareas extends JFrame {
 		JFrame dialog = this;
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Tarea tarea = new Tarea();
-				tarea.setVisible(true);
+
+				Tarea tareaAgregar = new Tarea(ListaTareas.this);
+				tareaAgregar.setVisible(true);
+
+				nuevaTarea = tareaAgregar.getTarea();
+
+				if (nuevaTarea != null && !nuevaTarea.isEmpty()) {
+					listModel.addElement(nuevaTarea);
+
+				}
 
 			}
 
@@ -77,14 +88,38 @@ public class ListaTareas extends JFrame {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				int selecion = lista.getSelectedIndex();
-				lista.remove(selecion);
+				int selecionado = lista.getSelectedIndex();
+				listModel.remove(selecionado);
 			}
 		});
 		btnEliminar.setBounds(290, 322, 122, 23);
 		contentPane.add(btnEliminar);
 
 		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				seleccionado = lista.getSelectedIndex();
+
+				lista.getSelectedIndex();
+				if (seleccionado != -1) {
+
+					String tareaActual = listModel.getElementAt(seleccionado);
+
+					Tarea tareaModificar = new Tarea(ListaTareas.this);
+                    tareaModificar.setVisible(true);
+                    
+                    
+                    String tareaModificada = tareaModificar.getTarea();
+                    if (tareaModificada != null && !tareaModificada.isEmpty()) {
+                        // Reemplazamos la tarea en la lista con la tarea modificada
+                        listModel.setElementAt(tareaModificada, seleccionado);
+                    }
+                } else {
+					JOptionPane.showMessageDialog(ListaTareas.this, "ERROR");
+                }
+            }
+        });
 		btnModificar.setBounds(151, 322, 129, 23);
 		contentPane.add(btnModificar);
 
