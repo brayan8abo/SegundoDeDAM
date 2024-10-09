@@ -36,6 +36,7 @@ public class Tarea extends JDialog {
         contentPanel.setLayout(null);
 
         textTarea = new JTextField();
+        textTarea.setBackground(new Color(255, 235, 205));
         textTarea.setBounds(35, 72, 375, 76);
         contentPanel.add(textTarea);
         textTarea.setColumns(10);
@@ -48,13 +49,13 @@ public class Tarea extends JDialog {
         contentPanel.add(lblNewLabel);
         
         JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon(Tarea.class.getResource("/img/Diseño sin título.png")));
+        lblNewLabel_1.setIcon(new ImageIcon(Tarea.class.getResource("/img/FONDOTAREAS.png")));
         lblNewLabel_1.setBounds(-80, 0, 514, 272);
         contentPanel.add(lblNewLabel_1);
         setLocationRelativeTo(null);
 
         JPanel buttonPane = new JPanel();
-        buttonPane.setBackground(new Color(255, 255, 255));
+        buttonPane.setBackground(SystemColor.activeCaption);
         getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
         JButton okButton = new JButton("AGREGAR");
@@ -66,7 +67,8 @@ public class Tarea extends JDialog {
                 dispose();  // Cerramos el diálogo
             }
         });
-        buttonPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        FlowLayout fl_buttonPane = new FlowLayout(FlowLayout.CENTER, 5, 5);
+        buttonPane.setLayout(fl_buttonPane);
         buttonPane.add(okButton);
         getRootPane().setDefaultButton(okButton);
 
