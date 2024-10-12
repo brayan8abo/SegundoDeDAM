@@ -74,10 +74,6 @@ public class Cuestionario extends JFrame {
 		contentPane.add(pregunta1, "panelPregunta1");
 		pregunta1.setLayout(null);
 		setLocationRelativeTo(null);
-		
-		JSlider slider = new JSlider();
-		slider.setBounds(158, 231, 200, 26);
-		pregunta1.add(slider);
 		barraP1.setStringPainted(true);
 
 		barraP1.setBounds(10, 268, 489, 14);
