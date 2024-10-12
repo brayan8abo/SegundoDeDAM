@@ -2,7 +2,6 @@ package Actividad2;
 
 import java.awt.CardLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,25 +9,31 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
-
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import java.awt.Color;
-
 import javax.swing.border.LineBorder;
 import java.awt.Component;
+import javax.swing.JRadioButton;
+import javax.swing.JProgressBar;
+import javax.swing.JSlider;
 
 public class Cuestionario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ButtonGroup grupoClimas = new ButtonGroup();
+	private final ButtonGroup grupoAnimales = new ButtonGroup();
+	JProgressBar barraP1 = new JProgressBar(1, 3);
+	JProgressBar barraP2 = new JProgressBar(1, 3);
+	JProgressBar barraP3 = new JProgressBar(1, 3);
+	public String respuestaComida;
+	public String respuestaClima;
+	public String respuestaAnimales;
 
 	/**
 	 * Launch the application.
@@ -69,11 +74,19 @@ public class Cuestionario extends JFrame {
 		contentPane.add(pregunta1, "panelPregunta1");
 		pregunta1.setLayout(null);
 		setLocationRelativeTo(null);
+		
+		JSlider slider = new JSlider();
+		slider.setBounds(158, 231, 200, 26);
+		pregunta1.add(slider);
+		barraP1.setStringPainted(true);
+
+		barraP1.setBounds(10, 268, 489, 14);
+		pregunta1.add(barraP1);
 		JToggleButton btnHamburguesa = new JToggleButton("");
 		btnHamburguesa.setBounds(50, 92, 135, 148);
 		pregunta1.add(btnHamburguesa);
 
-		JToggleButton btnPasta = new JToggleButton("New toggle button");
+		JToggleButton btnPasta = new JToggleButton("");
 		btnPasta.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnPasta.setBounds(340, 92, 135, 148);
 		pregunta1.add(btnPasta);
@@ -116,6 +129,14 @@ public class Cuestionario extends JFrame {
 					JOptionPane.showMessageDialog(null, "ERROR, SELECCIONA UNO");
 				}
 
+				if (btnHamburguesa.isSelected()) {
+					respuestaComida = "HAMBURGUESITAAAAAAA";
+
+				} else if (btnPasta.isSelected()) {
+					respuestaComida = "PASTICAAAAA";
+				}
+
+				barraP2.setValue(2);
 			}
 		});
 		btnSiguiente.setBounds(385, 287, 100, 23);
@@ -139,22 +160,18 @@ public class Cuestionario extends JFrame {
 
 		JButton btnAtras_1 = new JButton("ATRÁS");
 		btnAtras_1.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				cardlayout.show(contentPane, "panelPregunta1");
 			}
 		});
+
+		barraP2 = new JProgressBar(1, 3);
+		barraP2.setStringPainted(true);
+		barraP2.setBounds(20, 262, 489, 14);
+		pregunta2.add(barraP2);
 		btnAtras_1.setBounds(26, 287, 89, 23);
 		pregunta2.add(btnAtras_1);
-
-		JButton btnSiguiente_1 = new JButton("SIGUIENTE");
-		btnSiguiente_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cardlayout.show(contentPane, "panelPregunta3");
-
-			}
-		});
-		btnSiguiente_1.setBounds(385, 287, 100, 23);
-		pregunta2.add(btnSiguiente_1);
 
 		JLabel lblPregunta2 = new JLabel("¿QUÉ PREFIERES?");
 		lblPregunta2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -163,14 +180,36 @@ public class Cuestionario extends JFrame {
 		pregunta2.add(lblPregunta2);
 
 		JToggleButton btnInvierno = new JToggleButton("");
-		buttonGroup.add(btnInvierno);
+		grupoClimas.add(btnInvierno);
 		btnInvierno.setBounds(45, 88, 129, 150);
 		pregunta2.add(btnInvierno);
 
 		JToggleButton btnVerano = new JToggleButton("");
-		buttonGroup.add(btnVerano);
+		grupoClimas.add(btnVerano);
 		btnVerano.setBounds(342, 88, 129, 150);
 		pregunta2.add(btnVerano);
+
+		JButton btnSiguiente_1 = new JButton("SIGUIENTE");
+		btnSiguiente_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (btnInvierno.isSelected() || btnVerano.isSelected()) {
+					cardlayout.show(contentPane, "panelPregunta3");
+				} else {
+					JOptionPane.showMessageDialog(null, "ERROR, ELIGE UNA OPCIÓN");
+				}
+
+				if (btnVerano.isSelected()) {
+					respuestaClima = "VERANITOOO";
+				} else if (btnInvierno.isSelected()) {
+					respuestaClima = "FRIOOOOO";
+				}
+
+				barraP3.setValue(3);
+
+			}
+		});
+		btnSiguiente_1.setBounds(385, 287, 100, 23);
+		pregunta2.add(btnSiguiente_1);
 
 		JLabel fondoP2 = new JLabel("");
 		fondoP2.setIcon(new ImageIcon(Cuestionario.class.getResource("/resources/fondoPaneles.png")));
@@ -196,21 +235,66 @@ public class Cuestionario extends JFrame {
 				cardlayout.show(contentPane, "panelPregunta2");
 			}
 		});
+
+		barraP3 = new JProgressBar(1, 3);
+		barraP3.setStringPainted(true);
+		barraP3.setBounds(20, 267, 479, 14);
+		pregunta3.add(barraP3);
+
+		JRadioButton rdbtnPerro = new JRadioButton("");
+		grupoAnimales.add(rdbtnPerro);
+		rdbtnPerro.setBounds(386, 219, 21, 23);
+		pregunta3.add(rdbtnPerro);
+
+		JRadioButton rdbtnGato = new JRadioButton("");
+		grupoAnimales.add(rdbtnGato);
+		rdbtnGato.setBounds(112, 219, 21, 23);
+		pregunta3.add(rdbtnGato);
 		btnAtras_2.setBounds(25, 287, 89, 23);
 		pregunta3.add(btnAtras_2);
 
 		JButton btnFinalizar = new JButton("FINALIZAR");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+
+				if (rdbtnGato.isSelected()) {
+					respuestaAnimales = "MICHISSS";
+				} else if (rdbtnPerro.isSelected()) {
+					respuestaAnimales = "PERRITOOOSSS";
+				}
+				JOptionPane.showMessageDialog(null, "LAS RESPUESTAS FUERON: " + "\n" + respuestaComida + "\n"
+						+ respuestaClima + "\n" + respuestaAnimales);
 			}
+
 		});
 		btnFinalizar.setBounds(384, 287, 100, 23);
 		pregunta3.add(btnFinalizar);
+		JLabel lblPregunta3 = new JLabel("¿CUÁL TE GUSTA MÁS?");
+		lblPregunta3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPregunta3.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+		lblPregunta3.setBounds(140, 37, 217, 28);
+		pregunta3.add(lblPregunta3);
 
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(206, 146, 89, 23);
-		pregunta3.add(btnNewButton);
+		JButton btnPerro = new JButton("");
+		btnPerro.setBounds(327, 98, 125, 114);
+		pregunta3.add(btnPerro);
+
+		ImageIcon imagenIconPerro = new ImageIcon(classloader.getResource("perro.png"));
+		imagenIconPerro.setImage(imagenIconPerro.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+		btnPerro.setIcon(imagenIconPerro);
+
+		JButton btnGato = new JButton("New button");
+		btnGato.setBounds(62, 98, 125, 114);
+		pregunta3.add(btnGato);
+
+		ImageIcon imagenIconGato = new ImageIcon(classloader.getResource("gato.png"));
+		imagenIconGato.setImage(imagenIconGato.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+		btnGato.setIcon(imagenIconGato);
+
+		JLabel fondoP3 = new JLabel("");
+		fondoP3.setIcon(new ImageIcon(Cuestionario.class.getResource("/resources/fondoPaneles.png")));
+		fondoP3.setBounds(0, 0, 509, 321);
+		pregunta3.add(fondoP3);
 
 	}
 }
