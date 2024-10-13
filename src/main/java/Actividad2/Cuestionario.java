@@ -24,6 +24,8 @@ import javax.swing.JSlider;
 
 public class Cuestionario extends JFrame {
 
+	// SE DECLARAN VARIABLES STATIC PARA USAR EN TODA LA CLASE
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private final ButtonGroup grupoClimas = new ButtonGroup();
@@ -65,6 +67,7 @@ public class Cuestionario extends JFrame {
 		ClassLoader classloader = getClass().getClassLoader();
 		setLocationRelativeTo(null);
 
+//		SE CREA EL CARDLAYOUT
 		CardLayout cardlayout = new CardLayout();
 
 		setContentPane(contentPane);
@@ -86,17 +89,17 @@ public class Cuestionario extends JFrame {
 		btnPasta.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnPasta.setBounds(340, 92, 135, 148);
 		pregunta1.add(btnPasta);
-
+		// ASIGNACION DE IMAGEN AL BTNHAMBURGUESA
 		ImageIcon imagenIconHamburguesa = new ImageIcon(classloader.getResource("hamburguesa.png"));
 		imagenIconHamburguesa
 				.setImage(imagenIconHamburguesa.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
 		btnHamburguesa.setIcon(imagenIconHamburguesa);
-
+		// ASIGNACION DE IMAGEN AL BTNPASTA
 		ImageIcon imagenIconPasta = new ImageIcon(classloader.getResource("pasta.png"));
 		imagenIconPasta.setImage(imagenIconPasta.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
 		btnPasta.setIcon(imagenIconPasta);
 
-		// Agrupar los botones para que solo uno pueda estar seleccionado a la vez
+		// SE HACE UN GRUPO DE BOTONES PARA QUE SOLO SE PUEDA SELECCIONAR UNO A LA VEZ
 		ButtonGroup grupoComida = new ButtonGroup();
 		grupoComida.add(btnHamburguesa);
 		grupoComida.add(btnPasta);
@@ -109,7 +112,8 @@ public class Cuestionario extends JFrame {
 		JButton btnAtras = new JButton("ATRÁS");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(btnAtras, "ERROR");
+				JOptionPane.showMessageDialog(btnAtras, "ERROR,SELECCIONA UNA OPCIÓN"); // OPCION DE ERROR AL SER LA
+																						// PRIMERA PREGUNTA
 			}
 		});
 		btnAtras.setBounds(26, 287, 89, 23);
@@ -118,20 +122,20 @@ public class Cuestionario extends JFrame {
 		JButton btnSiguiente = new JButton("SIGUIENTE");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				// SE PREGUNTA SI ESTA SELECCIONADA ALGUNO DE LOS DOS BOTONES PARA HACER PASO AL SIGUIENTE CARDLAYOUT
 				if (btnHamburguesa.isSelected() || btnPasta.isSelected()) {
 					cardlayout.show(contentPane, "panelPregunta2");
 				} else {
-					JOptionPane.showMessageDialog(null, "ERROR, SELECCIONA UNO");
+					JOptionPane.showMessageDialog(null, "ERROR, SELECCIONA UNO"); // ERROR SI NO SELECCIONA NADA Y DA SIGUIENTE
 				}
 
 				if (btnHamburguesa.isSelected()) {
-					respuestaComida = "HAMBURGUESITAAAAAAA";
+					respuestaComida = "HAMBURGUESITAAAAAAA"; //ERCUPERACION Y ASIGNACION DE PREGUNTA
 
 				} else if (btnPasta.isSelected()) {
-					respuestaComida = "PASTICAAAAA";
+					respuestaComida = "PASTICAAAAA"; //ERCUPERACION Y ASIGNACION DE PREGUNTA
 				}
-
+//				SE LE DA INCREMENTO DE 2 A LA BARRA DE PROGRESO
 				barraP2.setValue(2);
 			}
 		});
@@ -158,6 +162,7 @@ public class Cuestionario extends JFrame {
 		btnAtras_1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+//				SE PERMITE DAR PASO ATRAS AL CARD DE LA PREGUNTA 0
 				cardlayout.show(contentPane, "panelPregunta1");
 			}
 		});
@@ -188,6 +193,7 @@ public class Cuestionario extends JFrame {
 		JButton btnSiguiente_1 = new JButton("SIGUIENTE");
 		btnSiguiente_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// SE PREGUNTA SI ESTA SELECCIONADA ALGUNO DE LOS DOS BOTONES PARA HACER PASO AL SIGUIENTE CARDLAYOUT
 				if (btnInvierno.isSelected() || btnVerano.isSelected()) {
 					cardlayout.show(contentPane, "panelPregunta3");
 				} else {
@@ -237,6 +243,8 @@ public class Cuestionario extends JFrame {
 		barraP3.setBounds(20, 267, 479, 14);
 		pregunta3.add(barraP3);
 
+//		SE USA RADIOBUTTON PARA LA ULTIMA PREGUNTA, DONDE TENEMOS DOS RDBUTTON
+		
 		JRadioButton rdbtnPerro = new JRadioButton("");
 		grupoAnimales.add(rdbtnPerro);
 		rdbtnPerro.setBounds(386, 219, 21, 23);
@@ -252,7 +260,7 @@ public class Cuestionario extends JFrame {
 		JButton btnFinalizar = new JButton("FINALIZAR");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				// SE PREGUNTA SI ESTA SELECCIONADA ALGUNO DE LOS DOS RDBUTTON PARA HACER PASO AL FINALIZAR Y SACAR RESPUESTAS
 				if (rdbtnGato.isSelected()) {
 					respuestaAnimales = "MICHISSS";
 				} else if (rdbtnPerro.isSelected()) {
@@ -260,6 +268,7 @@ public class Cuestionario extends JFrame {
 				}
 				JOptionPane.showMessageDialog(null, "LAS RESPUESTAS FUERON: " + "\n" + respuestaComida + "\n"
 						+ respuestaClima + "\n" + respuestaAnimales);
+//				SE HACE UN JOPTION PARA DAR INFORMACION DE LAS RESPUESTAS SELECCIONADAS 
 			}
 
 		});

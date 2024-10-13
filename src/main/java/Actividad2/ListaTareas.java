@@ -140,11 +140,12 @@ public class ListaTareas extends JFrame {
 
 					String tareaModificada = tareaModificar.getTarea();
 					if (tareaModificada != null && !tareaModificada.isEmpty()) {
-						// Reemplazamos la tarea en la lista con la tarea modificada
+						// SE RECOGE LA TAREA SELECCIONADA Y SE CAMBIA A LA NUEVA
 						listModel.setElementAt(tareaModificada, seleccionado);
 					}
 				} else {
-					//MENSAJE DE ERROR EN CASO DE QUO HAYA NADA EN LA TABLA O NO SE HAYA SELECCIONADO NADA
+					// MENSAJE DE ERROR EN CASO DE QUO HAYA NADA EN LA TABLA O NO SE HAYA
+					// SELECCIONADO NADA
 					JOptionPane.showMessageDialog(ListaTareas.this, "ERROR");
 				}
 			}

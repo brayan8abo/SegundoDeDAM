@@ -171,7 +171,6 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
@@ -207,11 +206,11 @@ public class ControladorEventos extends JDialog {
 
 		JComboBox<String> comboBox = new JComboBox<>();
 		comboBox.setFont(new Font("Linux Libertine G", Font.BOLD, 13));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Fiesta", "Concierto", "VIP" }));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "", "Fiesta", "Concierto", "VIP" }));
 		comboBox.setBounds(454, 39, 99, 22);
 		contentPanel.add(comboBox);
 
-		JSlider slider = new JSlider(0, 32, 1);
+		JSlider slider = new JSlider(0, 31, 0);
 		slider.setMajorTickSpacing(1);
 		slider.setPaintLabels(true);
 		slider.setPaintTicks(true);
@@ -261,10 +260,8 @@ public class ControladorEventos extends JDialog {
 
 						if (principal != null) {
 							principal.agregarEvento(nombre, tipo, fechaSeleccionada);
-						}
-						if (nombre.isEmpty() && tipo != "-1") {
-							JOptionPane.showMessageDialog(null, "ERROR");
-
+						} else {
+							JOptionPane.showMessageDialog(null, "ERROR, INGRESE DATOS");
 						}
 
 						dispose();

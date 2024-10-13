@@ -127,6 +127,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.event.ActionListener;
@@ -158,6 +159,7 @@ public class Eventos extends JFrame {
 		Calendar calendar = Calendar.getInstance();
 		int añoActual = calendar.get(Calendar.YEAR);
 		mesActual = calendar.get(Calendar.MONTH) + 1;
+		ClassLoader classloader = getClass().getClassLoader();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 390);
@@ -166,6 +168,8 @@ public class Eventos extends JFrame {
 		setLocationRelativeTo(null);
 		setTitle("EVENTOS");
 		setSize(590, 390);
+
+		ImageIcon iconAnimado = new ImageIcon(classloader.getResource("animacion.gif"));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -206,7 +210,7 @@ public class Eventos extends JFrame {
 			}
 		});
 		btnIncluir.setFont(new Font("Linux Libertine G", Font.BOLD, 13));
-		btnIncluir.setBounds(29, 300, 143, 23);
+		btnIncluir.setBounds(29, 300, 155, 23);
 		contentPane.add(btnIncluir);
 
 		JButton btnSalir = new JButton("SALIR");
@@ -218,6 +222,12 @@ public class Eventos extends JFrame {
 		btnSalir.setFont(new Font("Linux Libertine G", Font.BOLD, 13));
 		btnSalir.setBounds(428, 300, 89, 23);
 		contentPane.add(btnSalir);
+
+		JLabel lblFondo = new JLabel();
+		lblFondo.setBounds(0, 0, 574, 351);
+		lblFondo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblFondo.setIcon(iconAnimado);
+		contentPane.add(lblFondo);
 	}
 
 	// Método para agregar un evento
