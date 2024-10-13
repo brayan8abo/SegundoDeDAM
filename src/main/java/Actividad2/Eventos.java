@@ -157,7 +157,7 @@ public class Eventos extends JFrame {
 	public Eventos() {
 
 		Calendar calendar = Calendar.getInstance();
-		int añoActual = calendar.get(Calendar.YEAR);
+
 		mesActual = calendar.get(Calendar.MONTH) + 1;
 		ClassLoader classloader = getClass().getClassLoader();
 
@@ -194,8 +194,7 @@ public class Eventos extends JFrame {
 		lblTipo.setBounds(249, 28, 46, 16);
 		contentPane.add(lblTipo);
 
-		JLabel lblFecha = new JLabel(
-				"Fecha seleccionada: " + añoActual + "-" + String.format("%02d", mesActual) + "-01");
+		JLabel lblFecha = new JLabel("FECHA");
 		lblFecha.setFont(new Font("Linux Libertine G", Font.BOLD, 13));
 		lblFecha.setHorizontalAlignment(SwingConstants.CENTER);
 		lblFecha.setBounds(396, 30, 55, 14);

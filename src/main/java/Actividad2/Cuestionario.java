@@ -268,6 +268,7 @@ public class Cuestionario extends JFrame {
 				}
 				JOptionPane.showMessageDialog(null, "LAS RESPUESTAS FUERON: " + "\n" + respuestaComida + "\n"
 						+ respuestaClima + "\n" + respuestaAnimales);
+				dispose();
 //				SE HACE UN JOPTION PARA DAR INFORMACION DE LAS RESPUESTAS SELECCIONADAS 
 			}
 
