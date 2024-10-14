@@ -20,8 +20,6 @@ import javax.swing.border.LineBorder;
 import java.awt.Component;
 import javax.swing.JRadioButton;
 import javax.swing.JProgressBar;
-import javax.swing.JSlider;
-
 public class Cuestionario extends JFrame {
 
 	// SE DECLARAN VARIABLES STATIC PARA USAR EN TODA LA CLASE
