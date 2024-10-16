@@ -12,6 +12,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.Font;
 
 public class TPVview extends JFrame {
 
@@ -70,12 +71,18 @@ public class TPVview extends JFrame {
 		GridBagConstraints gblc6 = new GridBagConstraints();
 		initGridBagLayout(gblc6, 2, 1, 2, 2, 0.25, 0.2);
 
-		JButton button1 = new JButton("Boton 1");
-		JButton button2 = new JButton("Boton 2");
-		JButton button3 = new JButton("Boton 3");
-		JButton button4 = new JButton("Boton 4");
-		JButton button5 = new JButton("Boton 5");
-		JButton button6 = new JButton("Boton 6");
+		JButton button1 = new JButton("MESA 1");
+		JButton button2 = new JButton("MESA 2");
+		JButton button3 = new JButton("MESA 3");
+		JButton button4 = new JButton("MESA 4");
+		JButton button5 = new JButton("MESA 5");
+		JButton button6 = new JButton("MESA 6");
+		button1.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+		button2.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+		button3.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+		button4.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+		button5.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+		button6.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
 
 		contentPane.add(button1, gblc1);
 		contentPane.add(button2, gblc2);
