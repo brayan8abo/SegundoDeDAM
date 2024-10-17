@@ -24,7 +24,8 @@ public class Comandas extends JDialog {
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); //tpvView, solo va las cosas graficas, contolProductos controlador, y productos modelo
+			//no entiendo pero luego lo vemos :) x2 :) 
 		}
 	}
 
