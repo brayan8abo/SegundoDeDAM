@@ -13,6 +13,8 @@ import java.awt.GridBagLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TPVview extends JFrame {
 
@@ -77,6 +79,7 @@ public class TPVview extends JFrame {
 		JButton button4 = new JButton("MESA 4");
 		JButton button5 = new JButton("MESA 5");
 		JButton button6 = new JButton("MESA 6");
+		
 		button1.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
 		button2.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
 		button3.setFont(new Font("Linux Libertine G", Font.BOLD, 18));
@@ -132,6 +135,11 @@ public class TPVview extends JFrame {
 		button6.setIcon(mesa6);
 		button6.setHorizontalTextPosition(SwingConstants.CENTER);
 		button6.setVerticalTextPosition(SwingConstants.BOTTOM);
+	}
+
+	protected JPanel JPanel() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
