@@ -135,24 +135,24 @@ public class TPVview extends JFrame {
 		panel_1.setLayout(null);
 		setLocationRelativeTo(null);
 		
-		
+		String botonesComanda[] = {"ENTRANTES","PRIMEROS","ENTRANTES","SEGUNDOS","POSTRES","BEBIDAS"};
+		JButton botones[] = new JButton[botonesComanda.length];
+		for (int i = 0; i < botones.length; i++) {
+			
+			botones[i]=new JButton(botonesComanda[i]);
+			botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
+			botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
+			botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 18));
+			botones[i].setIcon(iconoMesa);
+			panel_1.add(botones[i]);
+			
+		}
 		
 		
 		//LISTENNERS DE BOTONES DE MESAS
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String botonesComanda[] = {"ENTRANTES","PRIMEROS","ENTRANTES","SEGUNDOS","POSTRES","BEBIDAS"};
-				JButton botones[] = new JButton[botonesComanda.length];
-				for (int i = 0; i < botones.length; i++) {
-					
-					botones[i]=new JButton(botonesComanda[i]);
-					botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
-					botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
-					botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 18));
-					botones[i].setIcon(iconoMesa);
-					panel_1.add(botones[i]);
-					
-				}
+				
 				cardLayout.show(contentPane, "ejemplo");
 				
 			}
