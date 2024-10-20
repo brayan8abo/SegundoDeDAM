@@ -57,35 +57,14 @@ public class TPVview extends JFrame {
 		// MESA 1
 		ImageIcon iconoMesa = new ImageIcon(classloader.getResource("mesa.png"));
 		iconoMesa.setImage(iconoMesa.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
-		
-//	TODO ESTO TE SOBRA
-//		// MESA 2
-//		ImageIcon mesa2 = new ImageIcon(classloader.getResource("mesa.png"));
-//		mesa2.setImage(mesa2.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-//
-//		// MESA 3
-//		ImageIcon mesa3 = new ImageIcon(classloader.getResource("mesa.png"));
-//		mesa3.setImage(iconoMesa.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-//		
-//		// MESA 4
-//		ImageIcon mesa4 = new ImageIcon(classloader.getResource("mesa.png"));
-//		mesa4.setImage(mesa4.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-//
-//		// MESA 5
-//		ImageIcon mesa5 = new ImageIcon(classloader.getResource("mesa.png"));
-//		mesa5.setImage(mesa5.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-//		
-//		// MESA 6
-//		ImageIcon mesa6 = new ImageIcon(classloader.getResource("mesa.png"));
-//		mesa6.setImage(mesa6.getImage().getScaledInstance(80, 80, java.awt.Image.SCALE_SMOOTH));
-//		
+
+
+
+	
 		JPanel panel = new JPanel();
 		contentPane.add(panel, "principal");
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		//ayer vi una cosa de arrays de botones, para poner lo de los entrantes, primeros, segundos y esas cosas
-		//yo lo hice con un bucle de botones jajaj
-		//ahora si toco el boton 1 como hago o que hago para que me salga lo otro 
 		
 		JButton button1 = new JButton("MESA 1");
 		
@@ -130,34 +109,62 @@ public class TPVview extends JFrame {
 		button6.setIcon(iconoMesa);
 		panel.add(button6);
 		
+		
+		ImageIcon IconoEntrante1 = new ImageIcon(classloader.getResource("alitas.png"));
+		IconoEntrante1.setImage(IconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+		
 		JPanel panel_1 = new JPanel();
+		setBounds(100, 100, 750, 600);
 		contentPane.add(panel_1, "ejemplo");
 		panel_1.setLayout(null);
-		setLocationRelativeTo(null);
+		
+		
 		
 		String botonesComanda[] = {"ENTRANTES","PRIMEROS","ENTRANTES","SEGUNDOS","POSTRES","BEBIDAS"};
 		JButton botones[] = new JButton[botonesComanda.length];
-		for (int i = 0; i < botones.length; i++) {
-			
-			botones[i]=new JButton(botonesComanda[i]);
-			botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
-			botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
-			botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 18));
-			botones[i].setIcon(iconoMesa);
-			panel_1.add(botones[i]);
-			
-		}
-		
+		int x = 10;
+	    int y = 10;
+	    int width = 110;
+	    int height =80;
+	    int padding = 8;
+
+	    for (int i = 0; i < botones.length; i++) {
+	        botones[i] = new JButton(botonesComanda[i]);
+	        botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
+	        botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
+	        botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 12));
+	        botones[i].setBounds(x, y, width, height); // Establecer posición y tamaño
+	        panel_1.add(botones[i]);
+
+	        // Mover la posición verticalmente para el siguiente botón
+	        x += width + padding;
+	        
+	        if (botones[i].isSelected()) {
+	        	JButton btnNewButton = new JButton("1entrante");
+				btnNewButton.setBounds(91, 147, 89, 23);
+				panel_1.add(btnNewButton);
+				btnNewButton.isVisible();
+				setLocationRelativeTo(null);
+				
+			}
+	        
+	        
+	        
+	    }
+
 		
 		//LISTENNERS DE BOTONES DE MESAS
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				
+				
 				
 				cardLayout.show(contentPane, "ejemplo");
 				
 			}
 		});
 	}
-
-
 }
