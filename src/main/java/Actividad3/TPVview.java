@@ -115,7 +115,7 @@ public class TPVview extends JFrame {
 		IconoEntrante1.setImage(IconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(100, 100, 750, 600);
+		panel_1.setBounds(100, 100,800, 800);
 		contentPane.add(panel_1, "ejemplo");
 		panel_1.setLayout(null);
 		
@@ -136,7 +136,7 @@ public class TPVview extends JFrame {
 	    	JPanel panelTipo = new JPanel();
 			contentPane.add(panelTipo, tipos[i]);
 			panelTipo.setLayout(null);
-			System.out.println("tipos[i]"+ tipos[i]);
+			//System.out.println("tipos[i]"+ tipos[i]);
 			JLabel jlabel = new JLabel(tipos[i]);
 			jlabel.setBounds(0,0,100,100);
 			panelTipo.add(jlabel);
@@ -147,7 +147,7 @@ public class TPVview extends JFrame {
 					cardLayout.show(contentPane, "ejemplo");
 				}
 			});
-			btnNewButton.setBounds(91, 119, 300, 317);
+			btnNewButton.setBounds(91, 119, 100, 100);
 			panelTipo.add(btnNewButton);
 	        botones[i] = new JButton(tipos[i]);
 	        botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
