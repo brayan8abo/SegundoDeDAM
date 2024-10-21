@@ -147,7 +147,7 @@ public class TPVview extends JFrame {
 					cardLayout.show(contentPane, "ejemplo");
 				}
 			});
-			btnNewButton.setBounds(91, 119, 100, 100);
+			btnNewButton.setBounds(91, 119, 100b , 100);
 			panelTipo.add(btnNewButton);
 	        botones[i] = new JButton(tipos[i]);
 	        botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
