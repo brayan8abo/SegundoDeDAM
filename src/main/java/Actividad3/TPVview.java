@@ -118,6 +118,20 @@ public class TPVview extends JFrame {
 		contentPane.add(panel_1, "ejemplo");
 		panel_1.setLayout(null);
 		
+		JPanel panel_2 = new JPanel();
+		contentPane.add(panel_2, "entrantes");
+		JPanel panel_7 = new JPanel();
+		contentPane.add(panel_7, "primeros");
+		
+		JPanel panel_8 = new JPanel();
+		contentPane.add(panel_8, "segundos");
+		
+		JPanel panel_9 = new JPanel();
+		contentPane.add(panel_9, "postres");
+		
+		JPanel panel_3 = new JPanel();
+		contentPane.add(panel_3, "bebidas");
+		
 		
 		
 		String botonesComanda[] = {"ENTRANTES","PRIMEROS","ENTRANTES","SEGUNDOS","POSTRES","BEBIDAS"};
@@ -133,35 +147,28 @@ public class TPVview extends JFrame {
 	        botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
 	        botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
 	        botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 12));
-	        botones[i].setBounds(x, y, width, height); // Establecer posición y tamaño
+	        botones[i].setBounds(x, y, width, height); 
+	       
+	        
+	        botones[i].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					cardLayout.show(contentPane, "entrantes");
+				}
+			});
+	      
+	        // Establecer posición y tamaño
 	        panel_1.add(botones[i]);
 
 	        // Mover la posición verticalmente para el siguiente botón
 	        x += width + padding;
 	        
-	        if (botones[i].isSelected()) {
-	        	JButton btnNewButton = new JButton("1entrante");
-				btnNewButton.setBounds(91, 147, 89, 23);
-				panel_1.add(btnNewButton);
-				btnNewButton.isVisible();
-				setLocationRelativeTo(null);
-				
+	      
 			}
-	        
-	        
-	        
-	    }
-
-		
 		//LISTENNERS DE BOTONES DE MESAS
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
-				
-				
-				
 				cardLayout.show(contentPane, "ejemplo");
 				
 			}
