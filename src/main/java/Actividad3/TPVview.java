@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
@@ -41,7 +42,7 @@ public class TPVview extends JFrame {
 
 	public void initGridBagLayout(GridBagConstraints gblc, int x, int y, int w, int h, double wx, double wh) {
 	}
-
+	String tipos[] = {"ENTRANTES","PRIMEROS","ENTRANTES","SEGUNDOS","POSTRES","BEBIDAS"};
 	public TPVview() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,47 +115,49 @@ public class TPVview extends JFrame {
 		IconoEntrante1.setImage(IconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
 		
 		JPanel panel_1 = new JPanel();
-		setBounds(100, 100, 750, 600);
+		panel_1.setBounds(100, 100, 750, 600);
 		contentPane.add(panel_1, "ejemplo");
 		panel_1.setLayout(null);
 		
-		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2, "entrantes");
-		JPanel panel_7 = new JPanel();
-		contentPane.add(panel_7, "primeros");
-		
-		JPanel panel_8 = new JPanel();
-		contentPane.add(panel_8, "segundos");
-		
-		JPanel panel_9 = new JPanel();
-		contentPane.add(panel_9, "postres");
-		
-		JPanel panel_3 = new JPanel();
-		contentPane.add(panel_3, "bebidas");
 		
 		
 		
-		String botonesComanda[] = {"ENTRANTES","PRIMEROS","ENTRANTES","SEGUNDOS","POSTRES","BEBIDAS"};
-		JButton botones[] = new JButton[botonesComanda.length];
+		
+		
+		JButton botones[] = new JButton[tipos.length];
 		int x = 10;
 	    int y = 10;
 	    int width = 110;
 	    int height =80;
 	    int padding = 8;
 
-	    for (int i = 0; i < botones.length; i++) {
-	        botones[i] = new JButton(botonesComanda[i]);
+	    for (int i = 0; i < tipos.length; i++) {
+	    	int indexTipo = i;
+	    	JPanel panelTipo = new JPanel();
+			contentPane.add(panelTipo, tipos[i]);
+			panelTipo.setLayout(null);
+			System.out.println("tipos[i]"+ tipos[i]);
+			JLabel jlabel = new JLabel(tipos[i]);
+			jlabel.setBounds(0,0,100,100);
+			panelTipo.add(jlabel);
+			
+			JButton btnNewButton = new JButton("ATRÁS");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					cardLayout.show(contentPane, "ejemplo");
+				}
+			});
+			btnNewButton.setBounds(91, 119, 300, 317);
+			panelTipo.add(btnNewButton);
+	        botones[i] = new JButton(tipos[i]);
 	        botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
 	        botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
 	        botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 12));
 	        botones[i].setBounds(x, y, width, height); 
-	       
-	        
 	        botones[i].addActionListener(new ActionListener() {
-				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					cardLayout.show(contentPane, "entrantes");
+					cardLayout.show(contentPane, tipos[indexTipo]);
 				}
 			});
 	      
@@ -163,9 +166,7 @@ public class TPVview extends JFrame {
 
 	        // Mover la posición verticalmente para el siguiente botón
 	        x += width + padding;
-	        
-	      
-			}
+		}
 		//LISTENNERS DE BOTONES DE MESAS
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
