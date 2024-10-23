@@ -29,6 +29,10 @@ public class ControlProductos {
 		listaProductos.add(p8);
 		listaProductos.add(p9);
 		listaProductos.add(p10);
+		
+		
+		
+		
 
 	}
 
