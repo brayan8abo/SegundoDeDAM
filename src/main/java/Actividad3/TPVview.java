@@ -51,8 +51,6 @@ public class TPVview extends JFrame {
 
 	String tipos[] = { "ENTRANTES", "PRIMEROS", "SEGUNDOS", "POSTRES", "BEBIDAS" };
 	private JTable tablaProductos;
-	
-	
 
 	public TPVview() {
 		setResizable(false);
@@ -62,15 +60,22 @@ public class TPVview extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		ClassLoader classloader = getClass().getClassLoader();
 		setContentPane(contentPane);
-		 cardLayout = new CardLayout();
+		cardLayout = new CardLayout();
 		contentPane.setLayout(cardLayout);
-		
-		
-		
 
 		// ICONO MESAS
 		ImageIcon iconoMesa = new ImageIcon(classloader.getResource("mesa.png"));
 		iconoMesa.setImage(iconoMesa.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+
+		ImageIcon iconoEntrante1 = new ImageIcon(classloader.getResource("croquetas.png"));
+		iconoEntrante1.setImage(iconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+		
+		ImageIcon iconoEntrante2 = new ImageIcon(classloader.getResource("pinchos.png"));
+		iconoEntrante2.setImage(iconoEntrante2.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+		
+
+		ImageIcon iconoEntrante3 = new ImageIcon(classloader.getResource("carpaccio.png"));
+		iconoEntrante3.setImage(iconoEntrante3.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, "principal");
@@ -84,11 +89,11 @@ public class TPVview extends JFrame {
 		panelTipos.setBounds(100, 100, 800, 800);
 		contentPane.add(panelTipos, "panelTipos");
 		panelTipos.setLayout(null);
-		
+
 		JPanel paneLista = new JPanel();
 		contentPane.add(paneLista, "panelLista");
 		paneLista.setLayout(null);
-		
+
 		JButton btnAgregar = new JButton("AGREGAR");
 		btnAgregar.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
 		btnAgregar.setBounds(148, 493, 115, 35);
@@ -96,21 +101,20 @@ public class TPVview extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(contentPane, "panelTipos");
-				
-				
+
 			}
 		});
-		
+
 		JButton btnBorrar = new JButton("BORRAR");
 		btnBorrar.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
 		btnBorrar.setBounds(35, 493, 103, 35);
 		paneLista.add(btnBorrar);
-		
+
 		JButton btnModificar = new JButton("MODIFICAR");
 		btnModificar.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
 		btnModificar.setBounds(275, 493, 121, 35);
 		paneLista.add(btnModificar);
-		
+
 		JButton btnSalir = new JButton("SALIR");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -120,29 +124,48 @@ public class TPVview extends JFrame {
 		btnSalir.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
 		btnSalir.setBounds(616, 500, 84, 28);
 		paneLista.add(btnSalir);
-		
+
 		tablaProductos = new JTable();
-		tablaProductos.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"MESA", "PRODUCTOS", "PRECIO", "TOTAL"
-			}
-		));
+		tablaProductos.setModel(
+				new DefaultTableModel(new Object[][] {}, new String[] { "MESA", "PRODUCTOS", "PRECIO", "TOTAL" }));
 		tablaProductos.setFont(new Font("Linux Libertine G", Font.BOLD, 13));
 		tablaProductos.setBounds(61, 99, 604, 289);
 		paneLista.add(tablaProductos);
-		
+
 		JButton btnAtras = new JButton("ATRÁS");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cardLayout.show(contentPane, "principal");
-				
+
 			}
 		});
 		btnAtras.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
 		btnAtras.setBounds(522, 500, 84, 28);
 		paneLista.add(btnAtras);
+
+		JLabel lblNMesa = new JLabel("# MESA");
+		lblNMesa.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNMesa.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
+		lblNMesa.setBounds(81, 64, 64, 24);
+		paneLista.add(lblNMesa);
+
+		JLabel lblProductos = new JLabel("PRODUCTOS");
+		lblProductos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProductos.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
+		lblProductos.setBounds(226, 64, 103, 24);
+		paneLista.add(lblProductos);
+
+		JLabel lblPrecio = new JLabel("PRECIO");
+		lblPrecio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPrecio.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
+		lblPrecio.setBounds(408, 64, 103, 24);
+		paneLista.add(lblPrecio);
+
+		JLabel lblTotal = new JLabel("TOTAL");
+		lblTotal.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTotal.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
+		lblTotal.setBounds(562, 64, 103, 24);
+		paneLista.add(lblTotal);
 
 		JButton botones[] = new JButton[tipos.length];
 		int x = 10;
@@ -156,7 +179,7 @@ public class TPVview extends JFrame {
 			JPanel panelProductos = new JPanel();
 			contentPane.add(panelProductos, tipos[i]);
 			panelProductos.setLayout(null);
-			// System.out.println("tipos[i]"+ tipos[i]);
+
 			JLabel jlabel = new JLabel(tipos[i]);
 			jlabel.setBounds(110, 20, 100, 100);
 			JLabel jlabel2 = new JLabel("prueba");
@@ -169,11 +192,50 @@ public class TPVview extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					cardLayout.show(contentPane, "panelTipos");
 				}
-				
-				
+
 			});
 			btnAtrasProductos.setBounds(200, 200, 100, 100);
 			panelProductos.add(btnAtrasProductos);
+			panelProductos.add(jlabel2);
+
+			if (tipos[i].equals("ENTRANTES")) {
+				JButton primeros1 = new JButton();
+				primeros1.setBounds(100, 120, 120, 150);
+				panelProductos.add(primeros1);
+				primeros1.setIcon(iconoEntrante1);
+				JButton primeros2 = new JButton();
+				primeros2.setBounds(250,200, 120, 150);
+				panelProductos.add(primeros2);
+				primeros2.setIcon(iconoEntrante2);
+				JButton primeros3 = new JButton();
+				primeros3.setBounds(350, 350, 120, 150);
+				panelProductos.add(primeros3);
+				primeros3.setIcon(iconoEntrante3);
+				
+				
+				
+			}
+			if (tipos[i].equals("PRIMEROS")) {
+				JButton primeros1 = new JButton("PRUEBA");
+				primeros1.setBounds(150, 150, 120, 40);
+				panelProductos.add(primeros1);
+			}
+			if (tipos[i].equals("SEGUNDOS")) {
+				JButton segundos1 = new JButton("PRUEBA");
+				segundos1.setBounds(150, 150, 120, 40);
+				panelProductos.add(segundos1);
+			}
+			if (tipos[i].equals("POSTRES")) {
+				JButton postres1 = new JButton("PRUEBA");
+				postres1.setBounds(150, 150, 120, 40);
+				panelProductos.add(postres1);
+			}
+			if (tipos[i].equals("BEBIDAS")) {
+				JButton bebidas1 = new JButton("PRUEBA");
+				bebidas1.setBounds(150, 150, 120, 40);
+				panelProductos.add(bebidas1);
+			}
+
 			botones[i] = new JButton(tipos[i]);
 			botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
 			botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
@@ -183,12 +245,12 @@ public class TPVview extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					cardLayout.show(contentPane, tipos[indexTipo]);
-					
+
 				}
 			});
 			panelTipos.add(botones[i]);
 			x += width + padding;
-			
+
 		}
 		setLocationRelativeTo(null);
 	}
