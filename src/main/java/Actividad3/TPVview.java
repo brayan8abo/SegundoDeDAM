@@ -1,4 +1,5 @@
-package Actividad3;
+/*package Actividad3;
+
 
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
@@ -22,17 +23,17 @@ import java.awt.CardLayout;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-public class TPVview extends JFrame {
-
+public class TPVview extends JFrame {*/
+/*
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	DefaultListModel<String> listModel = new DefaultListModel<>();
 	CardLayout cardLayout;
+	ClassLoader classloader = getClass().getClassLoader();
 
-	/**
+	
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,7 +59,7 @@ public class TPVview extends JFrame {
 		setBounds(100, 100, 750, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		ClassLoader classloader = getClass().getClassLoader();
+
 		setContentPane(contentPane);
 		cardLayout = new CardLayout();
 		contentPane.setLayout(cardLayout);
@@ -66,16 +67,6 @@ public class TPVview extends JFrame {
 		// ICONO MESAS
 		ImageIcon iconoMesa = new ImageIcon(classloader.getResource("mesa.png"));
 		iconoMesa.setImage(iconoMesa.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
-
-		ImageIcon iconoEntrante1 = new ImageIcon(classloader.getResource("croquetas.png"));
-		iconoEntrante1.setImage(iconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
-		
-		ImageIcon iconoEntrante2 = new ImageIcon(classloader.getResource("pinchos.png"));
-		iconoEntrante2.setImage(iconoEntrante2.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
-		
-
-		ImageIcon iconoEntrante3 = new ImageIcon(classloader.getResource("carpaccio.png"));
-		iconoEntrante3.setImage(iconoEntrante3.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, "principal");
@@ -199,44 +190,23 @@ public class TPVview extends JFrame {
 			panelProductos.add(jlabel2);
 
 			if (tipos[i].equals("ENTRANTES")) {
-				JButton primeros1 = new JButton();
-				primeros1.setBounds(100, 120, 120, 150);
-				panelProductos.add(primeros1);
-				primeros1.setIcon(iconoEntrante1);
-				JButton primeros2 = new JButton();
-				primeros2.setBounds(250,200, 120, 150);
-				panelProductos.add(primeros2);
-				primeros2.setIcon(iconoEntrante2);
-				JButton primeros3 = new JButton();
-				primeros3.setBounds(350, 350, 120, 150);
-				panelProductos.add(primeros3);
-				primeros3.setIcon(iconoEntrante3);
-				
-				
-				
-			}
-			if (tipos[i].equals("PRIMEROS")) {
-				JButton primeros1 = new JButton("PRUEBA");
-				primeros1.setBounds(150, 150, 120, 40);
-				panelProductos.add(primeros1);
-			}
-			if (tipos[i].equals("SEGUNDOS")) {
-				JButton segundos1 = new JButton("PRUEBA");
-				segundos1.setBounds(150, 150, 120, 40);
-				panelProductos.add(segundos1);
-			}
-			if (tipos[i].equals("POSTRES")) {
-				JButton postres1 = new JButton("PRUEBA");
-				postres1.setBounds(150, 150, 120, 40);
-				panelProductos.add(postres1);
-			}
-			if (tipos[i].equals("BEBIDAS")) {
-				JButton bebidas1 = new JButton("PRUEBA");
-				bebidas1.setBounds(150, 150, 120, 40);
-				panelProductos.add(bebidas1);
-			}
+				if (tipos[i].equals("ENTRANTES")) {
+				    botones[i].addActionListener(new ActionListener() {
+				        @Override
+				        public void actionPerformed(ActionEvent e) {
+				            cardLayout.show(contentPane, "panelEntrantes"); // Cambia a panelEntrantes
+			/*
+			 * if (tipos[i].equals("PRIMEROS")) { JButton primeros1 = new JButton("PRUEBA");
+			 * primeros1.setBounds(150, 150, 120, 40); panelProductos.add(primeros1); } if
+			 * (tipos[i].equals("SEGUNDOS")) { JButton segundos1 = new JButton("PRUEBA");
+			 * segundos1.setBounds(150, 150, 120, 40); panelProductos.add(segundos1); } if
+			 * (tipos[i].equals("POSTRES")) { JButton postres1 = new JButton("PRUEBA");
+			 * postres1.setBounds(150, 150, 120, 40); panelProductos.add(postres1); } if
+			 * (tipos[i].equals("BEBIDAS")) { JButton bebidas1 = new JButton("PRUEBA");
+			 * bebidas1.setBounds(150, 150, 120, 40); panelProductos.add(bebidas1); }
+			 */
 
-			botones[i] = new JButton(tipos[i]);
+			/*botones[i] = new JButton(tipos[i]);
 			botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
 			botones[i].setHorizontalTextPosition(SwingConstants.CENTER);
 			botones[i].setFont(new Font("Linux Libertine G", Font.BOLD, 12));
@@ -252,7 +222,7 @@ public class TPVview extends JFrame {
 			x += width + padding;
 
 		}
-		setLocationRelativeTo(null);
+		
 	}
 
 	private JButton botonesMesas(int identificador, ImageIcon iconoMesa) {
@@ -268,4 +238,47 @@ public class TPVview extends JFrame {
 		});
 		return button;
 	}
-}
+
+	private JPanel crearPanelEntrantes() {
+
+		ImageIcon iconoEntrante1 = new ImageIcon(classloader.getResource("croquetas.png"));
+		iconoEntrante1.setImage(iconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+
+		ImageIcon iconoEntrante2 = new ImageIcon(classloader.getResource("pinchos.png"));
+		iconoEntrante2.setImage(iconoEntrante2.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+
+		ImageIcon iconoEntrante3 = new ImageIcon(classloader.getResource("carpaccio.png"));
+		iconoEntrante3.setImage(iconoEntrante3.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+		JPanel panelEntrantes = new JPanel(new GridLayout(1, 3)); // 1 fila, 3 columnas
+
+		JButton btnEntrante1 = new JButton("Entrante 1");
+		btnEntrante1.setIcon(iconoEntrante1);
+		panelEntrantes.add(btnEntrante1);
+
+		JButton btnEntrante2 = new JButton("Entrante 2");
+		btnEntrante2.setIcon(iconoEntrante2);
+		panelEntrantes.add(btnEntrante2);
+
+		JButton btnEntrante3 = new JButton("Entrante 3");
+		btnEntrante3.setIcon(iconoEntrante3);
+		panelEntrantes.add(btnEntrante3);
+
+		// Aquí puedes añadir acciones a los botones
+		btnEntrante1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Acción para Entrante 1
+			}
+		});
+		btnEntrante2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Acción para Entrante 2
+			}
+		});
+		btnEntrante3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Acción para Entrante 3
+			}
+		});
+
+		return panelEntrantes;
+}*/
