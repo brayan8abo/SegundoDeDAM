@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.SliderUI;
+
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 
@@ -22,6 +24,8 @@ import java.awt.CardLayout;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class TPVview extends JFrame {
 
@@ -68,14 +72,13 @@ public class TPVview extends JFrame {
 		iconoMesa.setImage(iconoMesa.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
 
 		ImageIcon iconoEntrante1 = new ImageIcon(classloader.getResource("croquetas.png"));
-		iconoEntrante1.setImage(iconoEntrante1.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
-		
+		iconoEntrante1.setImage(iconoEntrante1.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
+
 		ImageIcon iconoEntrante2 = new ImageIcon(classloader.getResource("pinchos.png"));
-		iconoEntrante2.setImage(iconoEntrante2.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
-		
+		iconoEntrante2.setImage(iconoEntrante2.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
 
 		ImageIcon iconoEntrante3 = new ImageIcon(classloader.getResource("carpaccio.png"));
-		iconoEntrante3.setImage(iconoEntrante3.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
+		iconoEntrante3.setImage(iconoEntrante3.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, "principal");
@@ -89,6 +92,17 @@ public class TPVview extends JFrame {
 		panelTipos.setBounds(100, 100, 800, 800);
 		contentPane.add(panelTipos, "panelTipos");
 		panelTipos.setLayout(null);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setToolTipText("hOLA");
+		spinner.setModel(new SpinnerNumberModel(0, 0, 15, 1));
+		spinner.setBounds(100, 81, 73, 32);
+		panelTipos.add(spinner);
+		
+		JButton btnAgregarPlato = new JButton("AGREGAR");
+		btnAgregarPlato.setFont(new Font("Linux Libertine G", Font.BOLD, 14));
+		btnAgregarPlato.setBounds(77, 159, 118, 25);
+		panelTipos.add(btnAgregarPlato);
 
 		JPanel paneLista = new JPanel();
 		contentPane.add(paneLista, "panelLista");
@@ -182,10 +196,10 @@ public class TPVview extends JFrame {
 
 			JLabel jlabel = new JLabel(tipos[i]);
 			jlabel.setBounds(110, 20, 100, 100);
-			JLabel jlabel2 = new JLabel("prueba");
+			/*JLabel jlabel2 = new JLabel("prueba");
 			jlabel.setBounds(60, 100, 100, 100);
 			panelProductos.add(jlabel);
-			panelProductos.add(jlabel2);
+			panelProductos.add(jlabel2);*/
 
 			JButton btnAtrasProductos = new JButton("ATRÁS");
 			btnAtrasProductos.addActionListener(new ActionListener() {
@@ -196,24 +210,48 @@ public class TPVview extends JFrame {
 			});
 			btnAtrasProductos.setBounds(200, 200, 100, 100);
 			panelProductos.add(btnAtrasProductos);
-			panelProductos.add(jlabel2);
+		//	panelProductos.add(jlabel2);
 
+			/*
+			 * if (tipos[i].equals("ENTRANTES")) { JButton primeros1 = new JButton();
+			 * primeros1.setBounds(100, 120, 120, 150); panelProductos.add(primeros1);
+			 * primeros1.setIcon(iconoEntrante1); JButton primeros2 = new JButton();
+			 * primeros2.setBounds(250,200, 120, 150); panelProductos.add(primeros2);
+			 * primeros2.setIcon(iconoEntrante2); JButton primeros3 = new JButton();
+			 * primeros3.setBounds(350, 350, 120, 150); panelProductos.add(primeros3);
+			 * primeros3.setIcon(iconoEntrante3);
+			 * 
+			 */
 			if (tipos[i].equals("ENTRANTES")) {
-				JButton primeros1 = new JButton();
-				primeros1.setBounds(100, 120, 120, 150);
-				panelProductos.add(primeros1);
-				primeros1.setIcon(iconoEntrante1);
-				JButton primeros2 = new JButton();
-				primeros2.setBounds(250,200, 120, 150);
-				panelProductos.add(primeros2);
-				primeros2.setIcon(iconoEntrante2);
-				JButton primeros3 = new JButton();
-				primeros3.setBounds(350, 350, 120, 150);
-				panelProductos.add(primeros3);
-				primeros3.setIcon(iconoEntrante3);
+				panelProductos.setLayout(new GridLayout(1, 3, 10, 10)); // 1 fila, 3 columnas, con espaciado de 10
+																		// píxeles
+
+				JButton entrante1 = new JButton(iconoEntrante1);
+				JButton entrante2 = new JButton(iconoEntrante2);
+				JButton entrante3 = new JButton(iconoEntrante3);
+
+				// Añadir los botones al panel
+				panelProductos.add(entrante1);
+				panelProductos.add(entrante2);
+				panelProductos.add(entrante3);
+
+				// Configurar texto en los botones (opcional)
+				entrante1.setText("Croquetas");
+				entrante2.setText("Pinchos");
+				entrante3.setText("Carpaccio");
+
+				// Opcional: Posicionar el texto de cada botón en la parte inferior
+				entrante1.setVerticalTextPosition(SwingConstants.BOTTOM);
+				entrante1.setHorizontalTextPosition(SwingConstants.CENTER);
+				entrante2.setVerticalTextPosition(SwingConstants.BOTTOM);
+				entrante2.setHorizontalTextPosition(SwingConstants.CENTER);
+				entrante3.setVerticalTextPosition(SwingConstants.BOTTOM);
+				entrante3.setHorizontalTextPosition(SwingConstants.CENTER);
 				
 				
 				
+				
+
 			}
 			if (tipos[i].equals("PRIMEROS")) {
 				JButton primeros1 = new JButton("PRUEBA");
