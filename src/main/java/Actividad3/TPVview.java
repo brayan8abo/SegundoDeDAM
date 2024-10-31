@@ -1,5 +1,6 @@
 package Actividad3;
 
+
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 
@@ -24,19 +25,23 @@ import java.awt.CardLayout;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+<<<<<<< HEAD
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+=======
+>>>>>>> 4d46da16c4cba4cd14ab08fe612bc88ddba7858b
 public class TPVview extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	DefaultListModel<String> listModel = new DefaultListModel<>();
 	CardLayout cardLayout;
+	ClassLoader classloader = getClass().getClassLoader();
 
-	/**
-	 * Launch the application.
-	 */
+	
+	  //Launch the application.
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -62,7 +67,7 @@ public class TPVview extends JFrame {
 		setBounds(100, 100, 750, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		ClassLoader classloader = getClass().getClassLoader();
+
 		setContentPane(contentPane);
 		cardLayout = new CardLayout();
 		contentPane.setLayout(cardLayout);
@@ -71,6 +76,7 @@ public class TPVview extends JFrame {
 		ImageIcon iconoMesa = new ImageIcon(classloader.getResource("mesa.png"));
 		iconoMesa.setImage(iconoMesa.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH));
 
+<<<<<<< HEAD
 		ImageIcon iconoEntrante1 = new ImageIcon(classloader.getResource("croquetas.png"));
 		iconoEntrante1.setImage(iconoEntrante1.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
 
@@ -80,6 +86,8 @@ public class TPVview extends JFrame {
 		ImageIcon iconoEntrante3 = new ImageIcon(classloader.getResource("carpaccio.png"));
 		iconoEntrante3.setImage(iconoEntrante3.getImage().getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH));
 
+=======
+>>>>>>> 4d46da16c4cba4cd14ab08fe612bc88ddba7858b
 		JPanel panel = new JPanel();
 		contentPane.add(panel, "principal");
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
@@ -223,6 +231,7 @@ public class TPVview extends JFrame {
 			 * 
 			 */
 			if (tipos[i].equals("ENTRANTES")) {
+<<<<<<< HEAD
 				panelProductos.setLayout(new GridLayout(1, 3, 10, 10)); // 1 fila, 3 columnas, con espaciado de 10
 																		// píxeles
 
@@ -273,6 +282,23 @@ public class TPVview extends JFrame {
 				bebidas1.setBounds(150, 150, 120, 40);
 				panelProductos.add(bebidas1);
 			}
+=======
+				if (tipos[i].equals("ENTRANTES")) {
+				    botones[i].addActionListener(new ActionListener() {
+				        @Override
+				        public void actionPerformed(ActionEvent e) {
+				            cardLayout.show(contentPane, "panelEntrantes"); // Cambia a panelEntrantes
+			
+			  if (tipos[i].equals("PRIMEROS")) { JButton primeros1 = new JButton("PRUEBA");
+			  primeros1.setBounds(150, 150, 120, 40); panelProductos.add(primeros1); } if
+			  (tipos[i].equals("SEGUNDOS")) { JButton segundos1 = new JButton("PRUEBA");
+			  segundos1.setBounds(150, 150, 120, 40); panelProductos.add(segundos1); } if
+			  (tipos[i].equals("POSTRES")) { JButton postres1 = new JButton("PRUEBA");
+			 postres1.setBounds(150, 150, 120, 40); panelProductos.add(postres1); } if
+			 (tipos[i].equals("BEBIDAS")) { JButton bebidas1 = new JButton("PRUEBA");
+			  bebidas1.setBounds(150, 150, 120, 40); panelProductos.add(bebidas1); }
+			 
+>>>>>>> 4d46da16c4cba4cd14ab08fe612bc88ddba7858b
 
 			botones[i] = new JButton(tipos[i]);
 			botones[i].setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -290,7 +316,7 @@ public class TPVview extends JFrame {
 			x += width + padding;
 
 		}
-		setLocationRelativeTo(null);
+		
 	}
 
 	private JButton botonesMesas(int identificador, ImageIcon iconoMesa) {
