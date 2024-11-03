@@ -12,6 +12,7 @@ public class ControladorTPV {
 		this.vista = vista;
 		mesas = new MesasPanel[] { new MesasPanel("Mesa 1"), new MesasPanel("Mesa 2"), new MesasPanel("Mesa 3"),
 				new MesasPanel("Mesa 4"), new MesasPanel("Mesa 5"), new MesasPanel("Mesa 6") };
+		
 
 		for (MesasPanel mesa : mesas) {
 			vista.addMesaPanel(mesa);
@@ -19,6 +20,7 @@ public class ControladorTPV {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					mostrarPanelItem(mesa);
+					
 				}
 			});
 		}
@@ -36,6 +38,7 @@ public class ControladorTPV {
 				double precio = 10.0; // Precio fijo para simplificar
 				mesa.addItem(productoSeleccionado, "General", cantidad, precio);
 				dialog.dispose();
+				
 			}
 		});
 

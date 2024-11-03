@@ -5,5 +5,6 @@ public class PrincipalTPV {
         tpvWiew2_0 vista = new tpvWiew2_0();
         new ControladorTPV(vista);
         vista.setVisible(true);
+        
     }
 }

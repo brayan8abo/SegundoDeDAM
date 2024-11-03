@@ -40,6 +40,7 @@ public class MesasPanel extends JPanel {
 	public void addItem(String nombre, String tipo, int cantidad, double precio) {
 		platos.add(new Producto(nombre, tipo, cantidad, precio));
 		actualizarTextoComanda();
+		
 	}
 
 	private void actualizarTextoComanda() {

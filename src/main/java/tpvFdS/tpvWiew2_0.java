@@ -16,6 +16,7 @@ public class tpvWiew2_0 extends JFrame {
 		add(panelMesas, BorderLayout.CENTER);
 
 		new ControladorTPV(this); // Inicializar el controlador
+		setLocationRelativeTo(null);
 	}
 
 	public void addMesaPanel(MesasPanel mesa) {

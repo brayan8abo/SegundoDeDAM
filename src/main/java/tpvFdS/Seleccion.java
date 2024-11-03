@@ -53,12 +53,14 @@ public class Seleccion extends JPanel {
 	private void mostrarProductos(int categoriaIndex) {
 		// Crear un diálogo para mostrar productos
 		JDialog dialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this), "Seleccionar Producto", true);
-		JPanel panelProductos = new JPanel(new GridLayout(0, 2)); // Grilla flexible
+		JPanel panelProductos = new JPanel(new GridLayout(0, 2)); 
 
+		
 		for (String producto : productos[categoriaIndex]) {
 			JButton botonProducto = new JButton(producto);
 			botonProducto.addActionListener(e -> labelProductoSeleccionado.setText("Seleccionado: " + producto));
 			panelProductos.add(botonProducto);
+			
 		}
 
 		dialog.add(panelProductos);
