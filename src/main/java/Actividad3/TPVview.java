@@ -1,4 +1,4 @@
-package Actividad3;
+/*package Actividad3;
 
 
 import java.awt.EventQueue;
@@ -299,4 +299,4 @@ public class TPVview extends JFrame {
 			}
 		});
 		return button;
-	}
+	}*/
